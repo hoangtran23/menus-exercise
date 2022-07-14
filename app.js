@@ -9,7 +9,7 @@ const menu = [
   },
   {
     id: 2,
-    title: "diner double",
+    title: "dinner double",
     category: "lunch",
     price: 13.99,
     img: "./images/item-2.jpeg",
@@ -72,3 +72,23 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+console.log('test');
+var btns = document.getElementsByClassName("filter-btn");
+let list = document.getElementById("list-item");
+
+for (var i = 0; i < btns.length; ++i) {
+  btns[i].onclick = function() {
+    list.innerHTML = '';
+    console.log('clicked on ' + this.getAttribute("data-id"));
+    for(var j = 0; j < menu.length; j++) {
+      if (menu[j].category === this.getAttribute("data-id") || this.getAttribute("data-id") === 'all') {
+        let article = document.createElement("article");
+        let img = document.createElement("img");
+        img.src = menu[j].img;
+        article.appendChild(img);
+        list.appendChild(img);
+      }
+    }
+  };
+}
